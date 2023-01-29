@@ -9,26 +9,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Controller
+@RequestMapping("/list2")
 public class OrderController {
     private final OrderRepo orderRepo;
     private final AnimalCart animalCart;
 
-    @GetMapping("/list2")
+    @GetMapping
     public String get(Model model){
         List<Order> orders = orderRepo.findAll();
         model.addAttribute("orders",orders);
         return "order";
     }
 
-    @PostMapping("/list2")
-    public  String order(String name){
+    @PostMapping
+    public  String create(String phone){
         Order order = new Order();
+        order.setPhone(phone);
         order.setAnimals(animalCart.getAnimals());
+
 
         orderRepo.save(order);
 

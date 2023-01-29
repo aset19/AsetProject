@@ -14,6 +14,7 @@
   <div>
     <label>Телефон:&nbsp;</label>
     <input type="tel" th:value="${phone}" name="phone"></input>
+
   </div>
 
   <div>
@@ -25,7 +26,7 @@
   <thead>
   <tr>
     <th>ID</th>
-    <th>Дата заказа</th>
+
     <th>Телефон</th>
     <th>Кол-во животных</th>
   </tr>
@@ -33,7 +34,6 @@
   <tbody th:each="order : ${orders}">
   <tr>
     <td th:text="${order.id}"></td>
-    <td th:text="${order.date.toLocaleString()}"></td>
     <td th:text="${order.phone}"></td>
     <td th:text="${order.animals.size()}">></td>
   </tr>
@@ -41,7 +41,5 @@
 </table>
 <br>
 <br>
-
-
 </body>
 </html>

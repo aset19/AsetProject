@@ -1,34 +1,27 @@
 package FirstProjectSpring.AnimalProject.Entity;
 
-
+import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 
 @NoArgsConstructor
 @Data
 @Entity
 public class Animal {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "num", nullable = false)
-    private Long num;
-    public Long getNum() {
-        return num;
-    }
 
-    public void setNum(Long num) {
-        this.num = num;
-    }
 
     @Id
     @GeneratedValue(strategy =  GenerationType.SEQUENCE)
+    @Column(name="id")
     private Long id;
+
+
+    @Column(name="name")
     private String name;
 
 

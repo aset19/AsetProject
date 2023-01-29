@@ -10,24 +10,27 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Set;
 
 @AllArgsConstructor
 @Controller
+@RequestMapping("/list1")
 public class AnimalController {
     private final AnimalCart animalCart;
 
-    @GetMapping("/list1")
+    @GetMapping
     public String get(Model model){
         Set<Animal> animals = animalCart.getAnimals();
 
-        model.addAttribute("animals",animals);
         model.addAttribute("animal", new Animal());
+        model.addAttribute("animals",animals);
+
         return "animal";
     }
 
-    @PostMapping("/list1")
+    @PostMapping
     public String add(@Valid Animal animal, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("animal", animalCart.getAnimals());

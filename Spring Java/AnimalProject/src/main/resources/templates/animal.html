@@ -7,10 +7,10 @@
 
 <body>
 <h1>Животные:</h1>
-<form th:action="@{/list1}" th:object="${animal}" th:method="post">
+<form th:action="@{/list1}" th:object="${animal}" th:method="post">  <!--по адресу lis1 отправляем post(добавить) запрос ввидя экземпляр объекта animal-->
   <div>
     <label><label/>Название</label>
-    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{name}"/>           <!--поле name заполняется и передается в контроллер -->
     <div th:errors="*{name}" class="error"/>
 
   </div>
