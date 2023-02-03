@@ -16,28 +16,27 @@ import java.util.Set;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/list1")
 public class AnimalController {
     private final AnimalCart animalCart;
 
-    @GetMapping
+    @GetMapping("/list1")
     public String get(Model model){
         Set<Animal> animals = animalCart.getAnimals();
 
-        model.addAttribute("animal", new Animal());
-        model.addAttribute("animals",animals);
-
-        return "animal";
+        model.addAttribute("animals",animals);//список животных для вывода
+        model.addAttribute("animal", new Animal());//новое пустое животное,
+                                                               //которое будет заполнено значением в шаблоне и попадет в параметр метода add() контроллера
+        return "index";
     }
 
-    @PostMapping
+    @PostMapping("/list1")
     public String add(@Valid Animal animal, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("animal", animalCart.getAnimals());
+            return "index";
         }
         animalCart.add(animal);
         return "redirect:/list1";
     }
-
 
 }

@@ -13,10 +13,7 @@ import java.util.Set;
 @Component
 @SessionScope
 public class AnimalCart {
-
     private Set<Animal> animals = new HashSet<>();
-
     public void add(Animal animal){animals.add(animal);}
-
     public void clear(){animals.clear();}
 }

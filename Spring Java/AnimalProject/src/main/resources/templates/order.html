@@ -10,11 +10,10 @@
   <a href="/list1">Главная</a>
 </div>
 <h1>Заказы</h1>
-<form th:action="@{/list2}" th:method="post">
+<form th:action="@{/order}" th:method="post">
   <div>
     <label>Телефон:&nbsp;</label>
-    <input type="tel" th:value="${phone}" name="phone"></input>
-
+    <input type="tel" th:value="${phone}" name="phone">
   </div>
 
   <div>
@@ -26,16 +25,17 @@
   <thead>
   <tr>
     <th>ID</th>
-
+    <th>Дата Заказа</th>
     <th>Телефон</th>
     <th>Кол-во животных</th>
   </tr>
   </thead>
-  <tbody th:each="order : ${orders}">
+  <tbody th:each="order:${orders}">
   <tr>
     <td th:text="${order.id}"></td>
+    <td th:text="${order.date.toLocaleString()}"></td>
     <td th:text="${order.phone}"></td>
-    <td th:text="${order.animals.size()}">></td>
+    <td th:text="${order.animals.size()}"></td>
   </tr>
   </tbody>
 </table>
